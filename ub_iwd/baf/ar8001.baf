@@ -1,0 +1,8 @@
+IF // initial creation
+  Global("CDVoiceLocation","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("CDVoiceLocation","GLOBAL",1)
+    SetGlobal("CDVoiceIsHere","MYAREA",1)
+    CreateCreature("voice",[2265.2206],6)
+END

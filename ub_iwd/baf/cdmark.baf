@@ -1,0 +1,28 @@
+IF
+  Global("CDMarkHere","MYAREA",2)
+THEN
+  RESPONSE #100
+    NoAction()
+END
+
+IF
+  GlobalTimerExpired("CDGinaRingTimer","GLOBAL")
+  GlobalGT("Marketh_Ring","GLOBAL",4)
+THEN
+  RESPONSE #100
+    DestroySelf()
+END
+
+IF
+  See([PC])
+THEN 
+  RESPONSE #100
+    SetGlobal("CDMarkHere","MYAREA",2)
+END
+
+IF
+  HPPercentLT(Myself,100)
+THEN 
+  RESPONSE #100
+    SetGlobal("CDMarkHere","MYAREA",2)
+END

@@ -1,0 +1,14 @@
+IF
+  CreatureHidden(Myself)
+  GlobalGT("Golem_Commands","GLOBAL",1)
+  GlobalGT("MUMBER_HULK_DEAD","GLOBAL",3)
+  GlobalGT("SIMULACRUM_DEAD","GLOBAL",0)
+THEN
+  RESPONSE #100
+    EquipItem("RINGMAL",0) // No such index
+    GiveItemCreate("MIN1HP",Myself,1,1,1) // No such index
+    MultiPlayerSync()
+    EquipItem("MIN1HP",0) // No such index
+    HideCreature(Myself,FALSE)
+    Continue()
+END

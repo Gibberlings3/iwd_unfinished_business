@@ -1,0 +1,39 @@
+IF
+  Global("CDMarkHere","AR8005",2)
+THEN
+  RESPONSE #25
+    SetGlobal("CDMarkethTeleporting","GLOBAL",1)
+    SetGlobal("CDMarkHere","AR8005",0)
+    ActionOverride("cdmark",ForceSpellPoint([1783.421],WIZARD_DIMENSION_DOOR))
+    Wait(1)
+    ActionOverride("cdmark",DestroySelf())
+  RESPONSE #25
+    SetGlobal("CDMarkethTeleporting","GLOBAL",3)
+    SetGlobal("CDMarkHere","AR8005",0)
+    ActionOverride("cdmark",ForceSpellPoint([1783.421],WIZARD_DIMENSION_DOOR))
+    Wait(1)
+    ActionOverride("cdmark",DestroySelf())
+  RESPONSE #25
+    SetGlobal("CDMarkethTeleporting","GLOBAL",4)
+    SetGlobal("CDMarkHere","AR8005",0)
+    ActionOverride("cdmark",ForceSpellPoint([1783.421],WIZARD_DIMENSION_DOOR))
+    Wait(1)
+    ActionOverride("cdmark",DestroySelf())
+  RESPONSE #25
+    SetGlobal("CDMarkethTeleporting","GLOBAL",5)
+    SetGlobal("CDMarkHere","AR8005",0)
+    ActionOverride("cdmark",ForceSpellPoint([1783.421],WIZARD_DIMENSION_DOOR))
+    Wait(1)
+    ActionOverride("cdmark",DestroySelf())
+END
+
+IF
+  Global("CDMarkethTeleporting","GLOBAL",2)
+  Global("CDMarkHere","AR8005",0)
+  !Global("Marketh_Ring","GLOBAL",6)
+THEN
+  RESPONSE #100
+    SetGlobal("CDMarkHere","AR8005",1)
+    CreateCreature("cdmark",[1783.421],0)
+    ActionOverride("cdmark",ForceSpellPoint([1783.421],WIZARD_DIMENSION_DOOR))
+END

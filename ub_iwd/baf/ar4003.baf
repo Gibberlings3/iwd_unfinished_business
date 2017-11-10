@@ -1,0 +1,38 @@
+IF
+  GlobalGT("CDPresioDuel","GLOBAL",0)
+  GlobalLT("CDPresioDuel","GLOBAL",3)
+THEN
+  RESPONSE #100
+    ActionOverride("presio",DestroySelf())
+    IncrementGlobal("CDPresioDuel","GLOBAL",2) // single combat begins
+    CreateCreature("cdpresio",[2780.2414],5)
+END
+
+IF
+  GlobalGT("CDPresioDuel","GLOBAL",2)
+  GlobalLT("CDPresioDuel","GLOBAL",5)
+  Dead("presio")
+THEN
+  RESPONSE #100
+    AddXPVar("Level_2_Easy",@403)
+    IncrementGlobal("CDPresioDuel","GLOBAL",2) // duel over, presio loses
+END
+
+IF
+  GlobalGT("CDPresioDuel","GLOBAL",0) // duel active
+  GlobalLT("CDPresioDuel","GLOBAL",5) // but not over
+  Global("CDTrapActive","MYAREA",0)
+THEN
+  RESPONSE #100
+    TriggerActivation("cd4003tp",TRUE)
+    SetGlobal("CDTrapActive","MYAREA",1)
+END
+
+IF
+  GlobalGT("CDPresioDuel","GLOBAL",4) // duel over, legit or not
+  Global("CDTrapActive","MYAREA",1)
+THEN
+  RESPONSE #100
+    TriggerActivation("cd4003tp",FALSE)
+    SetGlobal("CDTrapActive","MYAREA",0)
+END
