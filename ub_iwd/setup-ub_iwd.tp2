@@ -13,7 +13,7 @@ ALWAYS
     ACTION_DEFINE_ARRAY tra#reload BEGIN setup END
     ACTION_DEFINE_ARRAY tra#noconvert BEGIN END
 
-    LAF HANDLE_CHARSETS INT_VAR infer_charset = 1 STR_VAR tra_path = EVAL ~ub_iwd/languages~ noconvert_array = tra#noconvert reload_array = tra#reload iconv_path = ~iconv~  END
+    LAF HANDLE_CHARSETS INT_VAR infer_charsets = 1 STR_VAR tra_path = EVAL ~ub_iwd/languages~ noconvert_array = tra#noconvert reload_array = tra#reload iconv_path = ~iconv~  END
 		
     LOAD_TRA ~ub_iwd/languages/%LANGUAGE%/Setup.tra~
     COPY_EXISTING ~sw1h01.itm~ ~ub_iwd/charsets.mrk~
