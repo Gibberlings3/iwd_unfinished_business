@@ -1,0 +1,6 @@
+IF
+	Global("CD_Move_Harken","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("CD_Move_Harken","GLOBAL",0)
+END

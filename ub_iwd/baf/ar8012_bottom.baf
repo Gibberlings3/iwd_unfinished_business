@@ -1,0 +1,23 @@
+IF
+	Global("CD_Move_Harken","GLOBAL",4)
+	Global("Harken_Quest","GLOBAL",1)
+	!GlobalTimerNotExpired("CDVoiceTimer","GLOBAL")
+	GlobalLT("Voice_Quest","GLOBAL",2)
+    Global("CDVoiceIsHere","AR8012",0)
+THEN
+	RESPONSE #100
+	    CreateCreature("voice",[1615.1249],0)
+        SetGlobal("CDVoiceIsHere","AR8012",1)
+END
+
+IF
+	Global("CD_Move_Harken","GLOBAL",5)
+	Global("Harken_Quest","GLOBAL",1)
+	!GlobalTimerNotExpired("CDVoiceTimer","GLOBAL")
+	GlobalLT("Voice_Quest","GLOBAL",2)
+    Global("CDVoiceIsHere","AR8012",0)
+THEN
+	RESPONSE #100
+	    CreateCreature("voice",[457.1058],0)
+        SetGlobal("CDVoiceIsHere","AR8012",1)
+END

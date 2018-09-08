@@ -11,7 +11,7 @@ ADD_TRANS_ACTION dharken BEGIN 4 5 6 END BEGIN END
 ~SetGlobal("CDVoiceLocation","GLOBAL",5)
 SetGlobal("CDVoiceIsHere","MYAREA",0)
 SetGlobal("SPRITE_IS_DEADVoice","GLOBAL",0)
-SetGlobalTimer("CDVoiceTimer","GLOBAL",7200)~
+SetGlobalTimer("CDVoiceTimer","GLOBAL",1)~
 
 // add dialogue option to discuss nym's theft while she's making shield
 EXTEND_BOTTOM dnym 18 19

@@ -11,6 +11,16 @@ THEN
 END
 
 IF
+	Global("SPRITE_IS_DEADIDOL","GLOBAL",1)
+	GlobalLT("Voice_Quest","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("Voice_Quest","GLOBAL",100)
+		Kill(Myself)
+END
+
+IF
   GlobalGT("Voice_Quest","GLOBAL",1)
 THEN
   RESPONSE #100

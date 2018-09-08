@@ -1,57 +1,58 @@
 BACKUP ~ub_iwd/backup~ // location to store files for backup
-AUTHOR ~webmaster@gibberlings3.net~ // email address displayed if install fails
+SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=152~ // email address displayed if install fails
 
-VERSION ~v7~
+VERSION ~v8~
 README ~ub_iwd/readme-ub_iwd.html~
 
 ASK_EVERY_COMPONENT
 
 ALWAYS
 
-  ACTION_IF !FILE_EXISTS ~ub_iwd/charsets.mrk~ BEGIN
+  ACTION_IF NOT VARIABLE_IS_SET iwd_offset THEN BEGIN
 
     ACTION_DEFINE_ARRAY tra#reload BEGIN setup END
     ACTION_DEFINE_ARRAY tra#noconvert BEGIN END
+    LAF HANDLE_CHARSETS INT_VAR infer_charsets = 1 STR_VAR tra_path = EVAL ~ub_iwd/languages~ noconvert_array = tra#noconvert reload_array = tra#reload iconv_path = ~ub_iwd/languages/iconv~  END
 
-    LAF HANDLE_CHARSETS INT_VAR infer_charsets = 1 STR_VAR tra_path = EVAL ~ub_iwd/languages~ noconvert_array = tra#noconvert reload_array = tra#reload iconv_path = ~iconv~  END
-		
-    LOAD_TRA ~ub_iwd/languages/%LANGUAGE%/Setup.tra~
-    COPY_EXISTING ~sw1h01.itm~ ~ub_iwd/charsets.mrk~
-	
-  END
-
-  INCLUDE ~ub_iwd/lib/iwd_cpmvars.tpa~
-  INCLUDE ~ub_iwd/lib/iwd_in_eet_cpmvars.tpa~
+    INCLUDE ~ub_iwd/lib/iwd_cpmvars.tpa~
+    INCLUDE ~ub_iwd/lib/iwd_in_eet_cpmvars.tpa~
   
-  ACTION_IF (GAME_IS ~iwd_in_bg2 iwdee~) OR ((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) THEN BEGIN // if IWD-in-BG2 instead of true IWD...
- 
-    OUTER_SET "iwd-in-bg2" =     1 // handy var for checking and simple math
-    ACTION_IF !GAME_IS ~iwdee eet~ BEGIN
-	
-      OUTER_SET "iwd_offset" = 74100 // offset to iwd strings
-
-    END ELSE BEGIN
+    ACTION_IF (GAME_IS ~iwd_in_bg2 iwdee~) OR ((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) THEN BEGIN // if not true IWD...
+   
+      OUTER_SET "iwd-in-bg2" =     1 // handy var for checking and simple math
+	  
+      ACTION_IF !GAME_IS ~iwdee eet~ BEGIN// iwd-in-bg2
+  	
+        OUTER_SET "iwd_offset" = 74100 // offset to iwd strings
+  
+      END ELSE BEGIN
+        
+  	    OUTER_SET "iwd_offset" = 0
       
-	  OUTER_SET "iwd_offset" = 0
-    
-	END
-	
-  END ELSE BEGIN
-
-    OUTER_SET "iwd-in-bg2" = 0
-    OUTER_SET "iwd_offset" = 0
+  	  END
+  	
+    END ELSE BEGIN // true iwd
+  
+      OUTER_SET "iwd-in-bg2" = 0
+      OUTER_SET "iwd_offset" = 0
+  
+    END
 
   END
-
+	
 END
 
 AUTO_TRA "ub_iwd/languages/%s"//%"
 
 LANGUAGE ~English~                                 ~english~ ~ub_iwd/languages/english/setup.tra~
-LANGUAGE ~French (by Graoumf)~                     ~french~  ~ub_iwd/languages/french/setup.tra~
-LANGUAGE ~Italian (by Giuseppe)~                   ~italian~ ~ub_iwd/languages/italian/setup.tra~
-LANGUAGE ~Russian (by Prowler, Accolon, Hawkmoon)~ ~russian~ ~ub_iwd/languages/russian/setup.tra~
-LANGUAGE ~Deutsch (Mike)~                          ~german~  ~ub_iwd/languages/german/setup.tra~
+LANGUAGE ~French (by Graoumf)~                     ~french~  ~ub_iwd/languages/english/setup.tra~
+                                                             ~ub_iwd/languages/french/setup.tra~
+LANGUAGE ~Italian (by Giuseppe)~                   ~italian~ ~ub_iwd/languages/english/setup.tra~
+                                                             ~ub_iwd/languages/italian/setup.tra~
+LANGUAGE ~Russian (by Prowler, Accolon, Hawkmoon)~ ~russian~ ~ub_iwd/languages/english/setup.tra~
+                                                             ~ub_iwd/languages/russian/setup.tra~
+LANGUAGE ~Deutsch (Mike)~                          ~german~  ~ub_iwd/languages/english/setup.tra~
+                                                             ~ub_iwd/languages/german/setup.tra~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -63,10 +64,7 @@ LANGUAGE ~Deutsch (Mike)~                          ~german~  ~ub_iwd/languages/g
 
 BEGIN @0 DESIGNATED 0
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~amfaith.itm~ @2 // skip if auril's bane installed
-REQUIRE_PREDICATE !(GAME_IS ~iwdee~) OR !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
-  
-// patch functions
-INCLUDE ~ub_iwd/lib/functions.tpa~
+REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
 
 // make iwd -> bg2 syntax adjustments for scripts and dialogues prior to their compilation below
 ACTION_IF ("%iwd-in-bg2%" = 1) THEN BEGIN
@@ -133,6 +131,12 @@ COPY ~ub_iwd/wav/cdbell.wav~  ~override~
 // initial spawn
 EXTEND_BOTTOM ~ar8001.bcs~ ~ub_iwd/baf/ar8001.baf~
 
+// harken shift
+EXTEND_BOTTOM ~ar8005.bcs~ ~ub_iwd/baf/ar8005voice.baf~
+EXTEND_BOTTOM ~ar8011.bcs~ ~ub_iwd/baf/ar8011.baf~
+EXTEND_TOP    ~ar8012.bcs~ ~ub_iwd/baf/ar8012.baf~
+EXTEND_BOTTOM ~ar8012.bcs~ ~ub_iwd/baf/ar8012_bottom.baf~
+
 // pale justice trap enable/disable
 EXTEND_BOTTOM ~ar8009.bcs~ ~ub_iwd/baf/ar8009.baf~
 
@@ -167,23 +171,20 @@ EXTEND_BOTTOM ~ar8009.bcs~ ~ub_iwd/baf/ldd_spawn.baf~ EVALUATE_BUFFER
 OUTER_SET cd_glob = 4 OUTER_SET cd_face = 5 OUTER_SET cd_x = 2806 OUTER_SET cd_y = 908
 EXTEND_BOTTOM ~ar8011.bcs~ ~ub_iwd/baf/ldd_spawn.baf~ EVALUATE_BUFFER
 
-OUTER_SET cd_glob = 5 OUTER_SET cd_face = 4 OUTER_SET cd_x = 1615 OUTER_SET cd_y = 1249
-EXTEND_BOTTOM ~ar8012.bcs~ ~ub_iwd/baf/ldd_spawn.baf~ EVALUATE_BUFFER
-
 // restore harken, add sister bethla
 COPY_EXISTING ~ar8012.are~ ~override~
   READ_LONG  0x54 "actor_off"
   READ_SHORT 0x58 "actor_num"
   FOR (index = 0 ; index < actor_num ; index = index + 1) BEGIN
     READ_ASCII ("%actor_off%" + 0x80 + ("%index%" * 0x110)) "cre_file"
-    PATCH_IF ("%cre_file%" STRING_COMPARE_CASE "sbethla" = 0) BEGIN // dead priestess becomes harken
+    PATCH_IF ("%cre_file%" STRING_COMPARE_CASE "sbethla" = 0) BEGIN // dead priestess becomes harken 1690.1255
       WRITE_ASCII ("%actor_off%" +        ("%index%" * 0x110)) ~Brother Harken~ #32
       WRITE_ASCII ("%actor_off%" + 0x48 + ("%index%" * 0x110)) ~dharken~  #8 // dialogue file
       WRITE_ASCII ("%actor_off%" + 0x58 + ("%index%" * 0x110)) ~ldhark~   #8 // class script; provides goofy stringheads
       WRITE_ASCII ("%actor_off%" + 0x68 + ("%index%" * 0x110)) ~ldidlrng~ #8 // general script; purges antimagic ring
       WRITE_ASCII ("%actor_off%" + 0x80 + ("%index%" * 0x110)) ~bharken~  #8 // creature file
     END ELSE
-    PATCH_IF ("%cre_file%" STRING_COMPARE_CASE "bharken" = 0) BEGIN // old harken becomes sister beth
+    PATCH_IF ("%cre_file%" STRING_COMPARE_CASE "bharken" = 0) BEGIN // old harken becomes sister beth 1660.710
       WRITE_ASCII ("%actor_off%" +        ("%index%" * 0x110)) ~Sister Beth~ #32
       WRITE_ASCII ("%actor_off%" + 0x58 + ("%index%" * 0x110)) ~~         #8 // class script; purges goofy stringheads
       WRITE_ASCII ("%actor_off%" + 0x80 + ("%index%" * 0x110)) ~cdbethla~ #8 // creature file
@@ -193,7 +194,7 @@ COPY_EXISTING ~ar8012.are~ ~override~
 
 // fix glory of suffering, quest reward
 COPY_EXISTING ~glory.itm~ ~override~
-  LPF cd_item_alter_effect INT_VAR equipped = 1 opcode = 18 parameter2 = 3 dicesize = 0 END
+  LPF ALTER_EFFECT INT_VAR check_headers = 0 match_opcode = 18 parameter2 = 3 dicesize = 0 END
   BUT_ONLY
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -205,7 +206,7 @@ COPY_EXISTING ~glory.itm~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @100 DESIGNATED 100
-REQUIRE_PREDICATE !(GAME_IS ~iwdee~) OR !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
+REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
 
 // iwd in bg2 adjustments
 ACTION_IF ("%iwd-in-bg2%" = 1) THEN BEGIN
@@ -286,7 +287,7 @@ COPY_EXISTING ~book01.itm~ ~override/cdmgolem.itm~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @200 DESIGNATED 200
-REQUIRE_PREDICATE !(GAME_IS ~iwdee~) OR !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
+REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
 
 // iwd in bg2 adjustments
 ACTION_IF ("%iwd-in-bg2%" = 1) THEN BEGIN
@@ -445,7 +446,7 @@ COPY_EXISTING ~marketh.cre~ ~override/cdmark.cre~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @400 DESIGNATED 400
-REQUIRE_PREDICATE !(GAME_IS ~iwdee~) OR !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
+REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
 
 /*
 CDPresioDuel
@@ -464,7 +465,7 @@ ACTION_IF ("%iwd-in-bg2%" = 1) THEN BEGIN
 
   // syntax adjustament
   COPY ~ub_iwd/baf/ar4003.baf~ ~ub_iwd/baf/ar4003.baf~
-    REPLACE_TEXTUALLY ~AddXPVar("Level_2_Easy",@403)~ ~DisplayString(Player1,@403) AddXP2DA("Level_2_Easy")~
+    REPLACE_TEXTUALLY ~AddXPVar("Level_2_Easy",@403)~ ~DisplayStringNoName(Myself,@403) AddXP2DA("Level_2_Easy")~
 
   // spell not available in conversion
   COPY ~ub_iwd/baf/cdpresio.baf~ ~ub_iwd/baf/cdpresio.baf~
@@ -560,7 +561,7 @@ COPY_EXISTING ~ar4003.are~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @500 DESIGNATED 500
-REQUIRE_PREDICATE !(GAME_IS ~iwdee~) OR !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
+REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
 
 COMPILE ~ub_iwd/dlg/orrick.d~ // alter dialogue to allow for upgrade
 
@@ -573,10 +574,7 @@ COMPILE ~ub_iwd/dlg/orrick.d~ // alter dialogue to allow for upgrade
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @600 DESIGNATED 600
-REQUIRE_PREDICATE !(GAME_IS ~iwdee~) OR !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
-
-// patch functions
-INCLUDE ~ub_iwd/lib/functions.tpa~
+REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
 
 // make iwd -> bg2 syntax adjustments for scripts and dialogues prior to their compilation below
 ACTION_IF ("%iwd-in-bg2%" = 1) THEN BEGIN
@@ -622,13 +620,13 @@ COPY_EXISTING ~mcapvil.cre~  ~override/cdcapv1a.cre~
   ADD_CRE_ITEM ~b1-6~ #0 #0 #0 ~NONE~ ~WEAPON1~ EQUIP          // weapon
   
 COPY_EXISTING ~ar4005.are~ ~override~
-  LPF cd_area_alter_cre INT_VAR x_coord = 3166 y_coord = 1553 STR_VAR cre_name = "The High Baptist" END // iwd
-  LPF cd_area_alter_cre INT_VAR x_coord = 3166 y_coord = 1553 STR_VAR cre_name = "TheHighBaptist" END // iwd-in-bg2
-  LPF cd_area_alter_cre INT_VAR x_coord = 3056 y_coord = 1356 STR_VAR cre_name = "Histachii 104" END
-  LPF cd_area_alter_cre INT_VAR x_coord = 2774 y_coord = 1372 STR_VAR cre_name = "Histachii 105" END
-  LPF cd_area_alter_cre INT_VAR x_coord = 2709 y_coord = 1468 STR_VAR cre_name = "Histachii 106" END
-  LPF cd_area_alter_cre INT_VAR x_coord = 3097 y_coord = 1274 STR_VAR cre_name = "Histachii 107" END
-  LPF cd_area_alter_cre INT_VAR x_coord = 3020 y_coord = 1400 STR_VAR cre_name = "Histachii 108" END
+  LPF ALTER_AREA_ACTOR INT_VAR x_coord = 3166 y_coord = 1553 STR_VAR actor_name  = "The High Baptist" END // iwd
+  LPF ALTER_AREA_ACTOR INT_VAR x_coord = 3166 y_coord = 1553 STR_VAR actor_name  = "TheHighBaptist" END // iwd-in-bg2
+  LPF ALTER_AREA_ACTOR INT_VAR x_coord = 3056 y_coord = 1356 STR_VAR actor_name  = "Histachii 104" END
+  LPF ALTER_AREA_ACTOR INT_VAR x_coord = 2774 y_coord = 1372 STR_VAR actor_name  = "Histachii 105" END
+  LPF ALTER_AREA_ACTOR INT_VAR x_coord = 2709 y_coord = 1468 STR_VAR actor_name  = "Histachii 106" END
+  LPF ALTER_AREA_ACTOR INT_VAR x_coord = 3097 y_coord = 1274 STR_VAR actor_name  = "Histachii 107" END
+  LPF ALTER_AREA_ACTOR INT_VAR x_coord = 3020 y_coord = 1400 STR_VAR actor_name  = "Histachii 108" END
   BUT_ONLY
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -640,10 +638,7 @@ COPY_EXISTING ~ar4005.are~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @1500 DESIGNATED 1500
-REQUIRE_PREDICATE !(GAME_IS ~iwdee~) OR !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
-
-// patch functions
-INCLUDE ~ub_iwd/lib/functions.tpa~
+REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
 
 // high quality, misc items as random drops
 CLEAR_ARRAYS
@@ -681,11 +676,11 @@ END
 // since it sets str to 6, make min str 7 so it actually penalizes
 COPY_EXISTING ~beltsto.itm~ ~override~
   WRITE_SHORT 0x26 6
-  LPF cd_item_alter_effect INT_VAR equipped = 1 opcode = 142 duration = 0 END
+  LPF ALTER_EFFECT INT_VAR check_headers = 0 match_opcode = 142 duration = 0 END
 
 // fix holy chaos deck
 COPY_EXISTING ~hlydeck.itm~ ~override~
-  LPF cd_item_alter_effect INT_VAR headers = 1 opcode = 148 power = 0 parameter2 = 1 END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 148 parameter2 = 1 END // cast instantly
 
 // change -2 con bump to two bumps to prevent wrapping around to 25 con
 COPY_EXISTING ~potnclr1.itm~ ~override~
@@ -757,7 +752,7 @@ ACTION_IF GAME_IS ~how totlm~ THEN BEGIN // how, totlm items
   
   // fix gauntlets of valor
   COPY_EXISTING ~gvalor2.itm~ ~override~
-    LPF cd_item_alter_header INT_VAR range = 0 END
+    LPF ALTER_ITEM_HEADER INT_VAR range = 0 END
     LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 142 target = 2 duration = 3 probability1 = 12 parameter2 = 44 END
 
   COPY_EXISTING ~tiernon.sto~ ~override~
@@ -775,7 +770,7 @@ END
 
 BEGIN @2000 DESIGNATED 2000
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~ar9100.are~ @2001 // how, totlm only
-REQUIRE_PREDICATE !(GAME_IS ~iwdee~) OR !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
+REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
 
 CLEAR_ARRAYS
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_rndtres BEGIN

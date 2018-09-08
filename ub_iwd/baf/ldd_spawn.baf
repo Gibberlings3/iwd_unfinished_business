@@ -2,6 +2,7 @@ IF
   Global("CDVoiceLocation","GLOBAL",%cd_glob%)
   Global("CDVoiceIsHere","MYAREA",0)
   Global("SPRITE_IS_DEADVoice","GLOBAL",0)
+  Global("Harken_Quest","GLOBAL",0)
 THEN
   RESPONSE #100
     SetGlobal("CDVoiceIsHere","MYAREA",1)

@@ -1,0 +1,27 @@
+IF
+	GlobalLT("CD_Move_Harken","GLOBAL",2)
+THEN
+	RESPONSE #100
+		IncrementGlobal("CD_Move_Harken","GLOBAL",2)
+		Continue()
+END
+
+IF
+	Global("CD_Move_Harken","GLOBAL",3)
+THEN
+	RESPONSE #100
+		ActionOverride("BrotherHarken",JumpToPoint([460.1010]))
+		ActionOverride("SisterIncylia",JumpToPoint([1690.1255]))
+		ActionOverride("SisterIncylia",MoveToPoint([1690.1255]))
+		SetGlobal("CD_Move_Harken","GLOBAL",5)
+		Continue()
+END
+
+IF
+	Global("CD_Move_Harken","GLOBAL",2)
+THEN
+	RESPONSE #100
+		ActionOverride("SisterIncylia",JumpToPoint([460.1010]))
+		SetGlobal("CD_Move_Harken","GLOBAL",4)
+		Continue()
+END
