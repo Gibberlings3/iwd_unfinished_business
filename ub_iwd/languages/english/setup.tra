@@ -1,49 +1,49 @@
-   @0 = ~The Voice of Durdel Anatha~
-   @1 = ~Sister Bethla~
-   @2 = ~This quest is already restored by Auril's Bane.~
-   @3 = ~This quest is already restored by the game or another mod.~
+   @0 = ~A Voz de Durdel Anatha~
+   @1 = ~Irmã Bethla~
+   @2 = ~Esta missão já foi restaurada pelo Auril's Bane.~
+   @3 = ~Esta missão já foi restaurada pelo jogo ou outro mod.~
 
- @100 = ~Malavon's Golems~
- @101 = ~Golem Building Book~
- @102 = ~Ah, what an excellent job you did disposing of my simulacrum! It took me a long time to make him, but money is no object when the suffering of others is the greatest reward.  Ha ha ha!~
+ @100 = ~Golems do Malavon~
+ @101 = ~Livro de Construção dos Golems~
+ @102 = ~Ah, que trabalho excelente você fez em dispor do meu simulacro! Levei um longo tempo pra criá-lo mas o dinheiro não é objeto quando o sofrimento dos outros é a maior recompensa. Ha ha ha!~
 
- @200 = ~Expanded Guello/Beorn Quest~
+ @200 = ~Missão Expandida do Guello/Beorn~
  
- @300 = ~Marketh's Ring~
- @301 = ~Well, I'm afraid you'll have to catch me. Good luck.~
- @302 = ~This morning, I woke up and realized that my little ring was a fake. I have no idea who you are, but I feel safe in assuming that *you* are responsible.~
- @303 = ~I should have killed you the first time I saw you. I knew you'd be trouble. Well, you've done it.  My ring is gone, with Ginafae's help, no doubt. Clever girl. You both outsmarted me.~
- @304 = ~Why don't you confront Marketh?~
- @305 = ~Would you like to help us take down Marketh?~
- @306 = ~Do you have any ideas for Marketh's ring?~
- @307 = ~Not yet. Farewell.~
- @308 = ~Hello again. I managed to switch Marketh's ring.~
- @309 = ~Please, don't forget your promise.~
+ @300 = ~Anel do Marketh~
+ @301 = ~Bem, eu temo que você terá que me pegar. Boa sorte.~
+ @302 = ~Esta manhã eu acordei e percebi que meu pequeno anel era falso. Eu não tenho idéia de quem você é mas eu me sinto seguro em assumir que *você* é responsável.~
+ @303 = ~Eu deveria ter matado você na primeira vez que eu vi você. Eu sabia que você seria um problema. Bem, você conseguiu. Meu anel se foi, com a ajuda da Ginafae sem dúvida. Garota esperta. Vocês dois me enganaram.~
+ @304 = ~Por que você não confronta o Marketh?~
+ @305 = ~Você gostaria de nos ajudar a derrotar o Marketh?~
+ @306 = ~Você tem quaisquer idéias pro anel do Marketh?~
+ @307 = ~Ainda não. Adeus.~
+ @308 = ~Olá de novo. Eu consegui trocar o anel do Marketh.~
+ @309 = ~Por favor não se esqueça da sua promessa~
  
- @400 = ~Presio's Duel~
- @401 = ~Then face me on your own. Or must you hide behind your minions?~
- @402 = ~Come then, witch, and face me in single combat. Let us test my righteous faith against your twisted arts.~
- @403 = ~You challenged Presio to single combat and prevailed.~
- @404 = ~Treachery!~
+ @400 = ~O Duelo do Presio~
+ @401 = ~Então me enfrente sozinho. Ou você precisa se esconder atrás dos seus servos?~
+ @402 = ~Então venha, bruxa e me enfrente em combate único. Deixe-me testar minha fé justa contra suas artes perversas.~
+ @403 = ~Você desafiou o Presio pra um combate único e prevaleceu.~
+ @404 = ~Traição!~
  
- @500 = ~Orrick's Rhino Beetle Shield~
- @501 = ~Is that a shield made from a rhino beetle? It's a very tough material, and I've read that it takes to enchantments quite well.~
- @502 = ~I could enhance it further for you, if you wish.~
- @503 = ~What's involved with upgrading the shield?~
- @504 = ~Perhaps later.~
- @505 = ~If you change your mind, let me know. Is there anything else I can do for you?~
- @506 = ~It will take a few days to lay in the proper enchantments, and the materials are fairly expensive.~
- @507 = ~Since you brought me this excellent tome on mythals, I'm willing to waive most of the cost. Let's say 15,000 gold.~
- @508 = ~For materials and time, it'll cost 30,000 gold.~
- @509 = ~You have yourself a deal.~
- @510 = ~Excellent. Come back in three days and the shield will be ready. Can I help you with anything else?~
- @511 = ~Welcome back travelers. I have your new shield ready. I laid in several enchantments to make it much tougher.~
- @512 = ~Is there anything else I can do for you?~
- @513 = ~You mentioned upgrading the rhino beetle shield before. What's involved with that?~
+ @500 = ~Escudo do Besouro Rhino do Orrick~
+ @501 = ~Esse é um escudo feito de um besouro rhino? É um material muito resistente e eu li que aceita encantamentos muito bem.~
+ @502 = ~Eu poderia melhorá-lo mais pra você se você desejar.~
+ @503 = ~O que está envolvido em atualizar o escudo?~
+ @504 = ~Talvez mais tarde.~
+ @505 = ~Se você mudar de idéia me deixe saber. Há qualquer coisa mais que eu possa fazer por você?~
+ @506 = ~Levará alguns dias pra colocar os encantamentos apropriados e os materiais são bastante caros.~
+ @507 = ~Já que você me trouxe este tomo excelente sobre os mythals eu estou disposto a abrir mão da maior parte do custo. Vamos dizer 15,000 gold.~
+ @508 = ~Pelos materiais e pelo tempo custará 30,000 gold.~
+ @509 = ~Você tem um acordo.~
+ @510 = ~Excelente. Volte em 3 dias e o escudo estará pronto. Eu posso ajudar você com algo mais?~
+ @511 = ~Bem-vindos de volta viajantes. Eu tenho seu novo escudo preparado. Eu coloquei vários encantamentos pra torná-lo muito mais resistente.~
+ @512 = ~Há qualquer coisa que eu possa fazer por você?~
+ @513 = ~Você mencionou sobre atualizar o escudo do besouro rhino antes. O que está envolvido nisso?~
  
- @600 = ~The High Baptist's Flock~
+ @600 = ~O Rebanho do Sumo Baptist~
 
-@1500 = ~Minor Item Restorations~ 
+@1500 = ~Restaurações dos Itens Menores~ 
 
-@2000 = ~Restored Random Drops~
-@2001 = ~Heart of Winter is required for this component.~
+@2000 = ~Queda Aleatória dos Itens Restaurada~
+@2001 = ~O Heart of Winter é requerido pra este componente.~
