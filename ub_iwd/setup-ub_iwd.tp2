@@ -715,9 +715,13 @@ COPY_EXISTING ~kuork3.sto~ ~override~
 
 COPY_EXISTING ~ldd_nym.sto~ ~override~
   ADD_STORE_ITEM ~kedl~    LAST #0 #0 #0 ~IDENTIFIED~ #1
+  ADD_STORE_ITEM ~helmhun~ LAST #0 #0 #0 ~IDENTIFIED~ #1
 
 COPY_EXISTING ~shlehlan.sto~ ~override~
   ADD_STORE_ITEM ~pellon~  LAST #8 #0 #0 ~IDENTIFIED~ #1
+  ADD_STORE_ITEM ~elfglov~ AFTER ~thistle~ #0 #0 #0 ~IDENTIFIED~ #1
+  ADD_STORE_ITEM ~elfclck~ AFTER ~thistle~ #0 #0 #0 ~IDENTIFIED~ #1
+  ADD_STORE_ITEM ~elfboot~ AFTER ~thistle~ #0 #0 #0 ~IDENTIFIED~ #1
 
 ACTION_IF GAME_IS ~how totlm~ THEN BEGIN // how, totlm items
 
@@ -760,19 +764,12 @@ ACTION_IF GAME_IS ~how totlm~ THEN BEGIN // how, totlm items
   // fix gauntlets of valor
   COPY_EXISTING ~gvalor2.itm~ ~override~
     LPF ALTER_ITEM_HEADER INT_VAR range = 0 END
-    LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 142 target = 2 duration = 3 probability1 = 12 parameter2 = 44 END
+    LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 142 target = 2 duration = 3 probability1 = 11 parameter2 = 44 END
 
   COPY_EXISTING ~tiernon.sto~ ~override~
     ADD_STORE_ITEM ~gvalor1~ LAST #3 #0 #0 ~IDENTIFIED~ #1
 
 END
-
-// un-false out actions to move to nonexistant resources. Thanks, jerk who runs Fixpack
-COPY_EXISTING ~d5hibap.bcs~ ~override~
-  DECOMPILE_AND_PATCH BEGIN
-    REPLACE_TEXTUALLY ~False()[ %TAB%%LNL%%MNL%%WNL%]+\(Global("BAPTISM_PHASE","LOCALS",[0-9]+)\)~ ~\1~
-  END
-  BUT_ONLY   
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
