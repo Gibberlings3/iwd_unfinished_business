@@ -629,6 +629,13 @@ COPY_EXISTING ~ar4005.are~ ~override~
   LPF ALTER_AREA_ACTOR INT_VAR x_coord = 3020 y_coord = 1400 STR_VAR actor_name  = "Histachii 108" END
   BUT_ONLY
 
+// un-false out actions to move to nonexistant resources. Thanks a lot, jerk who runs Fixpack
+COPY_EXISTING ~d5hibap.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~False()[ %TAB%%LNL%%MNL%%WNL%]+\(Global("BAPTISM_PHASE","LOCALS",[0-9]+)\)~ ~\1~ // 
+  END
+  BUT_ONLY   
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -759,6 +766,13 @@ ACTION_IF GAME_IS ~how totlm~ THEN BEGIN // how, totlm items
     ADD_STORE_ITEM ~gvalor1~ LAST #3 #0 #0 ~IDENTIFIED~ #1
 
 END
+
+// un-false out actions to move to nonexistant resources. Thanks, jerk who runs Fixpack
+COPY_EXISTING ~d5hibap.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~False()[ %TAB%%LNL%%MNL%%WNL%]+\(Global("BAPTISM_PHASE","LOCALS",[0-9]+)\)~ ~\1~
+  END
+  BUT_ONLY   
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
