@@ -1,7 +1,7 @@
 BACKUP ~ub_iwd/backup~ // location to store files for backup
-SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=152~ // email address displayed if install fails
+SUPPORT ~https://www.gibberlings3.net/forums/forum/152-icewind-dale-mod-roundup/~ // url displayed if install fails
 
-VERSION ~v8~
+VERSION ~v9~
 README ~ub_iwd/readme-ub_iwd.html~
 
 ASK_EVERY_COMPONENT
@@ -65,6 +65,7 @@ LANGUAGE ~Deutsch (Mike)~                          ~german~  ~ub_iwd/languages/e
 BEGIN @0 DESIGNATED 0
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~amfaith.itm~ @2 // skip if auril's bane installed
 REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
+LABEL ~cd_iwd_ub_voice_of_durdel_anatha~
 
 // make iwd -> bg2 syntax adjustments for scripts and dialogues prior to their compilation below
 ACTION_IF ("%iwd-in-bg2%" = 1) THEN BEGIN
@@ -207,6 +208,7 @@ COPY_EXISTING ~glory.itm~ ~override~
 
 BEGIN @100 DESIGNATED 100
 REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
+LABEL ~cd_iwd_ub_malavons_golems~
 
 // iwd in bg2 adjustments
 ACTION_IF ("%iwd-in-bg2%" = 1) THEN BEGIN
@@ -288,6 +290,7 @@ COPY_EXISTING ~book01.itm~ ~override/cdmgolem.itm~
 
 BEGIN @200 DESIGNATED 200
 REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
+LABEL ~cd_iwd_ub_expanded_guello~
 
 // iwd in bg2 adjustments
 ACTION_IF ("%iwd-in-bg2%" = 1) THEN BEGIN
@@ -357,6 +360,7 @@ COPY_EXISTING ~ldbeorn.bcs~  ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @300 DESIGNATED 300
+LABEL ~cd_iwd_ub_markeths_ring~
 
 /*
 marketh_ring
@@ -447,6 +451,7 @@ COPY_EXISTING ~marketh.cre~ ~override/cdmark.cre~
 
 BEGIN @400 DESIGNATED 400
 REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
+LABEL ~cd_iwd_ub_duel_presio~
 
 /*
 CDPresioDuel
@@ -562,6 +567,7 @@ COPY_EXISTING ~ar4003.are~ ~override~
 
 BEGIN @500 DESIGNATED 500
 REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
+LABEL ~cd_iwd_orricks_shield~
 
 COMPILE ~ub_iwd/dlg/orrick.d~ // alter dialogue to allow for upgrade
 
@@ -575,6 +581,7 @@ COMPILE ~ub_iwd/dlg/orrick.d~ // alter dialogue to allow for upgrade
 
 BEGIN @600 DESIGNATED 600
 REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
+LABEL ~cd_iwd_ub_high_baptists_flock~
 
 // make iwd -> bg2 syntax adjustments for scripts and dialogues prior to their compilation below
 ACTION_IF ("%iwd-in-bg2%" = 1) THEN BEGIN
@@ -646,6 +653,7 @@ COPY_EXISTING ~d5hibap.bcs~ ~override~
 
 BEGIN @1500 DESIGNATED 1500
 REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
+LABEL ~cd_iwd_ub_minor_item_restoration~
 
 // high quality, misc items as random drops
 CLEAR_ARRAYS
@@ -782,6 +790,7 @@ END
 BEGIN @2000 DESIGNATED 2000
 REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~ar9100.are~ @2001 // how, totlm only
 REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
+LABEL ~cd_iwd_ub_restore_random_drops~
 
 CLEAR_ARRAYS
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_rndtres BEGIN
