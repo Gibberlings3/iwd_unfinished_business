@@ -11,7 +11,7 @@ set mod_folder=ub_iwd
 
 REM /* MODIFY: list here which IE games the mod is compatible with, from this list of possibilities: */
 REM /* %bg1%, %bg2%, %bgt%, %tutu%, %bgee%, %bgiiee%, %iwd1%, %iwdee%, %iwd2%, %iwd2ee%, %iwd-in-bg2%, %pst%, %pstee% */
-set "compatible_games=%eet%, %iwd1%, %iwdee%, or %iwd-in-bg2%"
+set "compatible_games=%iwd1%, %iwdee%, %eet%, or %iwd-in-bg2%"
 
 REM /* MODIFY: these variables have sensible default values but they may need to be tweaked to match your particular mod */
 REM /* the ico_folder is where your .ico files are stored, which is usually the mod's backup or style folder */
