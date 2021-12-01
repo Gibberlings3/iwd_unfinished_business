@@ -44,15 +44,17 @@ END
 
 AUTO_TRA "ub_iwd/languages/%s"//%"
 
-LANGUAGE ~English~                                 ~english~ ~ub_iwd/languages/english/setup.tra~
-LANGUAGE ~French (by Graoumf)~                     ~french~  ~ub_iwd/languages/english/setup.tra~
-                                                             ~ub_iwd/languages/french/setup.tra~
-LANGUAGE ~Italian (by Giuseppe)~                   ~italian~ ~ub_iwd/languages/english/setup.tra~
-                                                             ~ub_iwd/languages/italian/setup.tra~
-LANGUAGE ~Russian (by Prowler, Accolon, Hawkmoon)~ ~russian~ ~ub_iwd/languages/english/setup.tra~
-                                                             ~ub_iwd/languages/russian/setup.tra~
-LANGUAGE ~Deutsch (Mike)~                          ~german~  ~ub_iwd/languages/english/setup.tra~
-                                                             ~ub_iwd/languages/german/setup.tra~
+LANGUAGE ~English~                                 ~english~    ~ub_iwd/languages/english/setup.tra~
+LANGUAGE ~French (by Graoumf)~                     ~french~     ~ub_iwd/languages/english/setup.tra~
+                                                                ~ub_iwd/languages/french/setup.tra~
+LANGUAGE ~Italian (by Giuseppe)~                   ~italian~    ~ub_iwd/languages/english/setup.tra~
+                                                                ~ub_iwd/languages/italian/setup.tra~
+LANGUAGE ~Russian (by Prowler, Accolon, Hawkmoon)~ ~russian~    ~ub_iwd/languages/english/setup.tra~
+                                                                ~ub_iwd/languages/russian/setup.tra~
+LANGUAGE ~Deutsch (Mike)~                          ~german~     ~ub_iwd/languages/english/setup.tra~
+                                                                ~ub_iwd/languages/german/setup.tra~
+LANGUAGE ~Brazilian Portuguese (Felipe)~           ~portuguese~ ~ub_iwd/languages/english/setup.tra~
+                                                                ~ub_iwd/languages/portuguese/setup.tra~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
