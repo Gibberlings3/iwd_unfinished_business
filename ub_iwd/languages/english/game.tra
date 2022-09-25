@@ -1,15 +1,8 @@
-   @0 = ~The Voice of Durdel Anatha~
    @1 = ~Sister Bethla~
-   @2 = ~This quest is already restored by Auril's Bane.~
-   @3 = ~This quest is already restored by the game or another mod.~
 
- @100 = ~Malavon's Golems~
  @101 = ~Golem Building Book~
  @102 = ~Ah, what an excellent job you did disposing of my simulacrum! It took me a long time to make him, but money is no object when the suffering of others is the greatest reward.  Ha ha ha!~
-
- @200 = ~Expanded Guello/Beorn Quest~
  
- @300 = ~Marketh's Ring~
  @301 = ~Well, I'm afraid you'll have to catch me. Good luck.~
  @302 = ~This morning, I woke up and realized that my little ring was a fake. I have no idea who you are, but I feel safe in assuming that *you* are responsible.~
  @303 = ~I should have killed you the first time I saw you. I knew you'd be trouble. Well, you've done it.  My ring is gone, with Ginafae's help, no doubt. Clever girl. You both outsmarted me.~
@@ -20,13 +13,11 @@
  @308 = ~Hello again. I managed to switch Marketh's ring.~
  @309 = ~Please, don't forget your promise.~
  
- @400 = ~Presio's Duel~
  @401 = ~Then face me on your own. Or must you hide behind your minions?~
  @402 = ~Come then, witch, and face me in single combat. Let us test my righteous faith against your twisted arts.~
  @403 = ~You challenged Presio to single combat and prevailed.~
  @404 = ~Treachery!~
  
- @500 = ~Orrick's Rhino Beetle Shield~
  @501 = ~Is that a shield made from a rhino beetle? It's a very tough material, and I've read that it takes to enchantments quite well.~
  @502 = ~I could enhance it further for you, if you wish.~
  @503 = ~What's involved with upgrading the shield?~
@@ -40,13 +31,3 @@
  @511 = ~Welcome back travelers. I have your new shield ready. I laid in several enchantments to make it much tougher.~
  @512 = ~Is there anything else I can do for you?~
  @513 = ~You mentioned upgrading the rhino beetle shield before. What's involved with that?~
- 
- @600 = ~The High Baptist's Flock~
-
- @700 = ~Actual Shadows in Vale of Shadows~
- @701 = ~This change only works with oIWD (with HoW and/or ToTLM installed) and IWDEE.~
-
-@1500 = ~Minor Item Restorations~ 
-
-@2000 = ~Restored Random Drops~
-@2001 = ~Heart of Winter is required for this component.~

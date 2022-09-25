@@ -1,4 +1,4 @@
-BACKUP ~ub_iwd/backup~ // location to store files for backup
+BACKUP ~weidu_external/ub_iwd/backup~ // location to store files for backup
 SUPPORT ~https://www.gibberlings3.net/forums/forum/152-icewind-dale-mod-roundup/~ // url displayed if install fails
 
 VERSION ~v9~
@@ -9,52 +9,66 @@ ASK_EVERY_COMPONENT
 ALWAYS
 
   ACTION_IF NOT VARIABLE_IS_SET iwd_offset THEN BEGIN
-
-    ACTION_DEFINE_ARRAY tra#reload BEGIN setup END
-    ACTION_DEFINE_ARRAY tra#noconvert BEGIN END
-    LAF HANDLE_CHARSETS INT_VAR infer_charsets = 1 STR_VAR tra_path = EVAL ~ub_iwd/languages~ noconvert_array = tra#noconvert reload_array = tra#reload iconv_path = ~ub_iwd/languages/iconv~  END
-
+  
     INCLUDE ~ub_iwd/lib/iwd_cpmvars.tpa~
     INCLUDE ~ub_iwd/lib/iwd_in_eet_cpmvars.tpa~
-  
-    ACTION_IF (GAME_IS ~iwd_in_bg2 iwdee~) OR ((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) THEN BEGIN // if not true IWD...
-   
-      OUTER_SET "iwd-in-bg2" =     1 // handy var for checking and simple math
-	  
-      ACTION_IF !GAME_IS ~iwdee eet~ BEGIN// iwd-in-bg2
-  	
-        OUTER_SET "iwd_offset" = 74100 // offset to iwd strings
-  
-      END ELSE BEGIN
-        
-  	    OUTER_SET "iwd_offset" = 0
-      
-  	  END
-  	
-    END ELSE BEGIN // true iwd
-  
-      OUTER_SET "iwd-in-bg2" = 0
+    
+    ACTION_IF ((GAME_IS iwdee) OR ((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~))) BEGIN // enhanced edition: iwdee, or iwd via eet
+    
+      OUTER_SET "iwd-in-bg2" = 1
       OUTER_SET "iwd_offset" = 0
-  
+      OUTER_SPRINT ~tra_location~ ~ub_iwd/languages~
+    
+    END ELSE BEGIN // if not true IWD...
+    
+      // convert strings from UTF-8 for originals
+      ACTION_DEFINE_ARRAY cdnoconvert BEGIN weidu END
+      ACTION_DEFINE_ARRAY cdreload BEGIN game END
+      LAF HANDLE_CHARSETS INT_VAR from_utf8 = 1 infer_charsets = 1
+                          STR_VAR default_language = ~english~ tra_path = ~ub_iwd/languages~ out_path = ~weidu_external/ub_iwd/languages~ noconvert_array = cdnoconvert reload_array = cdreload END
+      
+      OUTER_SPRINT ~tra_location~ ~weidu_external/ub_iwd/languages~
+    
+      ACTION_IF GAME_IS ~iwd_in_bg2~ THEN BEGIN 
+      
+        OUTER_SET "iwd-in-bg2" = 1
+        OUTER_SET "iwd_offset" = 74100
+        
+      END ELSE BEGIN // original IWD  
+      
+        OUTER_SET "iwd-in-bg2" = 0
+        OUTER_SET "iwd_offset" = 0
+      
+      END      
+
     END
 
   END
 	
 END
 
-AUTO_TRA "ub_iwd/languages/%s"//%"
-
-LANGUAGE ~English~                                 ~english~    ~ub_iwd/languages/english/setup.tra~
-LANGUAGE ~French (by Graoumf)~                     ~french~     ~ub_iwd/languages/english/setup.tra~
-                                                                ~ub_iwd/languages/french/setup.tra~
-LANGUAGE ~Italian (by Giuseppe)~                   ~italian~    ~ub_iwd/languages/english/setup.tra~
-                                                                ~ub_iwd/languages/italian/setup.tra~
-LANGUAGE ~Russian (by Prowler, Accolon, Hawkmoon)~ ~russian~    ~ub_iwd/languages/english/setup.tra~
-                                                                ~ub_iwd/languages/russian/setup.tra~
-LANGUAGE ~Deutsch (Mike)~                          ~german~     ~ub_iwd/languages/english/setup.tra~
-                                                                ~ub_iwd/languages/german/setup.tra~
-LANGUAGE ~Brazilian Portuguese (Felipe)~           ~portuguese~ ~ub_iwd/languages/english/setup.tra~
-                                                                ~ub_iwd/languages/portuguese/setup.tra~
+LANGUAGE ~English~                                 ~english~    ~ub_iwd/languages/english/game.tra~
+                                                                ~ub_iwd/languages/english/weidu.tra~
+LANGUAGE ~French (by Graoumf)~                     ~french~     ~ub_iwd/languages/english/game.tra~
+                                                                ~ub_iwd/languages/english/weidu.tra~
+                                                                ~ub_iwd/languages/french/game.tra~
+                                                                ~ub_iwd/languages/french/weidu.tra~
+LANGUAGE ~Italian (by Giuseppe)~                   ~italian~    ~ub_iwd/languages/english/game.tra~
+                                                                ~ub_iwd/languages/english/weidu.tra~
+                                                                ~ub_iwd/languages/italian/game.tra~
+                                                                ~ub_iwd/languages/italian/weidu.tra~
+LANGUAGE ~Russian (by Prowler, Accolon, Hawkmoon)~ ~russian~    ~ub_iwd/languages/english/game.tra~
+                                                                ~ub_iwd/languages/english/weidu.tra~
+                                                                ~ub_iwd/languages/russian/game.tra~
+                                                                ~ub_iwd/languages/russian/weidu.tra~
+LANGUAGE ~Deutsch (Mike)~                          ~german~     ~ub_iwd/languages/english/game.tra~
+                                                                ~ub_iwd/languages/english/weidu.tra~
+                                                                ~ub_iwd/languages/german/game.tra~
+                                                                ~ub_iwd/languages/german/weidu.tra~
+LANGUAGE ~Brazilian Portuguese (Felipe)~           ~portuguese~ ~ub_iwd/languages/english/game.tra~
+                                                                ~ub_iwd/languages/english/weidu.tra~
+                                                                ~ub_iwd/languages/portuguese/game.tra~
+                                                                ~ub_iwd/languages/portuguese/weidu.tra~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

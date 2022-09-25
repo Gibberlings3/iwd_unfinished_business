@@ -1,0 +1,23 @@
+// Les textes qui sont affichés à l'installation ne doivent pas avoir d'accent sous peine d'être illisibles dans la fenêtre DOS
+
+   @0 = ~La Voix de Durdel Anatha~
+   @2 = ~Cette quête est déjà restaurée par Auril's Bane.~
+
+ @100 = ~Les Golems de Malavon~
+ 
+ @200 = ~Quete de Guello / Beorn etendue~
+
+// J'ai repris des textes existant déjà dans le jeu pour certains
+ @300 = ~L'anneau de Marketh~
+
+// Présio est une femme et s'écrit avec un accent en français
+ @400 = ~Le duel avec Presio~
+ 
+ @500 = ~Bouclier en carapace de scarabee rhinoceros d'Orrick~
+ 
+ @600 = ~Suivant du Grand Baptiste~
+ 
+@1500 = ~Restauration d'objets mineurs~
+
+@2000 = ~Restauration des tresors aleatoires~
+@2001 = ~Heart of Winter est requis pour ce composant.~
