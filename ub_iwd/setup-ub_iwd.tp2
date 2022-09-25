@@ -648,6 +648,25 @@ COPY_EXISTING ~d5hibap.bcs~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
+///// restore Vale of Shadows shadow respawns          \\\\\
+///// only set up for oIWD and IWDEE due to INI support\\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @700 DESIGNATED 700
+REQUIRE_PREDICATE (GAME_IS ~iwdee iwd how totlm~) @701
+LABEL ~cd_iwd_ub_vale_of_shadows_shadow_respawn~
+
+COPY_EXISTING ~ar3000.ini~ ~override~
+  REPLACE_TEXTUALLY
+    ~critters=lShadow1,lShadow2,lShadow3,lShadow4,lShadow5,lShadow6,lShadow7,lShadow8,lShadow9,lShadow10,lShadow11,lShadow12,lShadow13,lShadow14,lShadow15,Shadow1~
+    ~critters=lShadow1,Shadow2,Shadow3,Shadow4,Shadow5,Shadow6,Shadow7,Shadow8,Shadow9,Shadow10,Shadow11,Shadow12,Shadow13,Shadow14,Shadow15,Shadow1~
+  BUT_ONLY
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
 ///// minor item restorations                          \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
