@@ -84,26 +84,27 @@ REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~o
 LABEL ~cd_iwd_ub_voice_of_durdel_anatha~
 
 // make iwd -> bg2 syntax adjustments for scripts and dialogues prior to their compilation below
-ACTION_IF ("%iwd-in-bg2%" = 1) THEN BEGIN
-
-  COPY ~ub_iwd/baf/lddurd01.baf~ ~ub_iwd/baf/lddurd01.baf~
+COPY ~ub_iwd/baf/lddurd01.baf~ ~weidu_external/ub_iwd/baf/lddurd01.baf~
+  PATCH_IF ("%iwd-in-bg2%" = 1) BEGIN
     REPLACE_TEXTUALLY ~EquipItem("ringtom",0)~ 
                       ~EquipItem("ringtom")~
+  END                    
 
-  COPY ~ub_iwd/baf/ldd_area.baf~ ~ub_iwd/baf/ldd_area.baf~
+// make iwd -> bg2 syntax adjustments for scripts and dialogues prior to their compilation below
+COPY ~ub_iwd/baf/ldd_area.baf~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+  PATCH_IF ("%iwd-in-bg2%" = 1) BEGIN
     REPLACE_TEXTUALLY ~ActionOverride(Player1,CreateCreature("cdbell",\[-1\.-1\],0))~
                       ~CreateCreatureObject("cdbell",Player1,0,0,0)~
+  END                      
 
-  COPY ~ub_iwd/dlg/voice.d~ ~ub_iwd/dlg/voice.d~
+// make iwd -> bg2 syntax adjustments for scripts and dialogues prior to their compilation below
+COPY ~ub_iwd/dlg/voice.d~ ~weidu_external/ub_iwd/dlg/voice.d~
+  PATCH_IF ("%iwd-in-bg2%" = 1) BEGIN
     REPLACE_TEXTUALLY ~DestroyItem("min2hp")~ ~DestroyItem("minhp1")~
-    REPLACE_EVALUATE // always be careful here; will also affect WEIGHT #x if you're not careful
-        ~#\([0-9]+\)~
-        BEGIN
-          SET "RESULT" = ("%MATCH1%" + "%iwd_offset%")
-        END
-        ~#%RESULT%~
-
-END
+    REPLACE_EVALUATE ~#\([0-9]+\)~ BEGIN // always be careful here; will also affect WEIGHT #x if you're not careful
+      SET "RESULT" = ("%MATCH1%" + "%iwd_offset%")
+    END ~#%RESULT%~
+  END 
 
 // new state needed to fix Dead() triggers that don't use DVs; add RES action
 APPEND ~state.ids~  ~0x00000FC0 STATE_REALLY_DEAD~ UNLESS ~0x00000FC0 STATE_REALLY_DEAD~
@@ -136,10 +137,10 @@ COPY_EXISTING ~voice.cre~ ~override~
   BUT_ONLY_IF_IT_CHANGES
 
 // script for voice
-COMPILE ~ub_iwd/baf/lddurd01.baf~
+COMPILE ~weidu_external/ub_iwd/baf/lddurd01.baf~
 
 // various trigger tweaks
-COMPILE ~ub_iwd/dlg/voice.d~
+COMPILE ~weidu_external/ub_iwd/dlg/voice.d~
 
 // bell from marketh's palace to move voice around
 // with one sound file, pointless to do ogg > wav dance
@@ -158,22 +159,22 @@ EXTEND_BOTTOM ~ar8012.bcs~ ~ub_iwd/baf/ar8012_bottom.baf~
 EXTEND_BOTTOM ~ar8009.bcs~ ~ub_iwd/baf/ar8009.baf~
 
 // play bell, move voice
-EXTEND_BOTTOM ~ar8001.bcs~ ~ub_iwd/baf/ldd_area.baf~
-EXTEND_BOTTOM ~ar8002.bcs~ ~ub_iwd/baf/ldd_area.baf~
-EXTEND_BOTTOM ~ar8003.bcs~ ~ub_iwd/baf/ldd_area.baf~
-EXTEND_BOTTOM ~ar8004.bcs~ ~ub_iwd/baf/ldd_area.baf~
-EXTEND_BOTTOM ~ar8005.bcs~ ~ub_iwd/baf/ldd_area.baf~
-EXTEND_BOTTOM ~ar8006.bcs~ ~ub_iwd/baf/ldd_area.baf~
-EXTEND_BOTTOM ~ar8007.bcs~ ~ub_iwd/baf/ldd_area.baf~
-EXTEND_BOTTOM ~ar8008.bcs~ ~ub_iwd/baf/ldd_area.baf~
-EXTEND_BOTTOM ~ar8009.bcs~ ~ub_iwd/baf/ldd_area.baf~
-EXTEND_BOTTOM ~ar8010.bcs~ ~ub_iwd/baf/ldd_area.baf~
-EXTEND_BOTTOM ~ar8011.bcs~ ~ub_iwd/baf/ldd_area.baf~
-EXTEND_BOTTOM ~ar8012.bcs~ ~ub_iwd/baf/ldd_area.baf~
-EXTEND_BOTTOM ~ar8013.bcs~ ~ub_iwd/baf/ldd_area.baf~
-EXTEND_BOTTOM ~ar8014.bcs~ ~ub_iwd/baf/ldd_area.baf~
-EXTEND_BOTTOM ~ar8015.bcs~ ~ub_iwd/baf/ldd_area.baf~
-EXTEND_BOTTOM ~ar8016.bcs~ ~ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8001.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8002.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8003.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8004.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8005.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8006.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8007.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8008.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8009.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8010.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8011.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8012.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8013.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8014.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8015.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
+EXTEND_BOTTOM ~ar8016.bcs~ ~weidu_external/ub_iwd/baf/ldd_area.baf~
 
 // potential spawn areas
 OUTER_SET cd_glob = 1 OUTER_SET cd_face = 6 OUTER_SET cd_x = 2265 OUTER_SET cd_y = 2206
@@ -226,23 +227,23 @@ BEGIN @100 DESIGNATED 100
 REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
 LABEL ~cd_iwd_ub_malavons_golems~
 
-// iwd in bg2 adjustments
-ACTION_IF ("%iwd-in-bg2%" = 1) THEN BEGIN
-
-  // make iwd -> bg2 syntax adjustments for scripts and dialogues prior to their compilation below
-  COPY ~ub_iwd/dlg/malgolem.d~ ~ub_iwd/dlg/malgolem.d~
+// make iwd -> bg2 syntax adjustments for scripts and dialogues prior to their compilation below
+COPY ~ub_iwd/dlg/malgolem.d~ ~weidu_external/ub_iwd/dlg/malgolem.d~
+  PATCH_IF ("%iwd-in-bg2%" = 1) BEGIN
     REPLACE_TEXTUALLY ~Protagonist~ ~LastTalkedToBy~
-    REPLACE_EVALUATE
-        ~#\([0-9]+\)~
-        BEGIN
-          SET "RESULT" = ("%MATCH1%" + "%iwd_offset%")
-        END
-        ~#%RESULT%~
+    REPLACE_EVALUATE ~#\([0-9]+\)~ BEGIN
+      SET "RESULT" = ("%MATCH1%" + "%iwd_offset%")
+    END ~#%RESULT%~
+  END
 
-  // make iwd -> bg2 syntax adjustments for scripts and dialogues prior to their compilation below
-  COPY ~ub_iwd/baf/cdmalgol.baf~ ~ub_iwd/baf/cdmalgol.baf~
+// make iwd -> bg2 syntax adjustments for scripts and dialogues prior to their compilation below
+COPY ~ub_iwd/baf/cdmalgol.baf~ ~weidu_external/ub_iwd/baf/cdmalgol.baf~
+  PATCH_IF ("%iwd-in-bg2%" = 1) BEGIN
     REPLACE_TEXTUALLY ~Internal(Myself,\([0-9]+\),\([0-9]+\))~ ~Global("CDLocalVar\1","LOCALS",\2)~
     REPLACE_TEXTUALLY ~ChangeStat(Myself,XPVALUE,0,SET)~ ~~
+  END  
+
+ACTION_IF ("%iwd-in-bg2%" = 1) BEGIN
 
   // close exploit of killing neutral/friendly golems for free xp
   COPY_EXISTING ~golemiro.cre~ ~override~
@@ -266,8 +267,8 @@ END ELSE BEGIN
   
 END
 
-COMPILE ~ub_iwd/baf/cdmalgol.baf~
-        ~ub_iwd/dlg/malgolem.d~
+COMPILE ~weidu_external/ub_iwd/baf/cdmalgol.baf~
+        ~weidu_external/ub_iwd/dlg/malgolem.d~
 
 EXTEND_BOTTOM ~ar8007.bcs~   ~ub_iwd/baf/ar8007.baf~
 
@@ -389,29 +390,30 @@ marketh_ring
 6 - ring swapped, marketh vulnerable
 */
 
+// syntax adjustment
+COPY ~ub_iwd/baf/ldmarkth.baf~ ~weidu_external/ub_iwd/baf/ldmarkth.baf~
+  PATCH_IF ("%iwd-in-bg2%" = 1) BEGIN
+    REPLACE_TEXTUALLY ~HideCreature(Myself,FALSE)~ ~Activate(Myself)~
+    REPLACE_TEXTUALLY ~SetDialogueRange(300)~ ~~
+    REPLACE_TEXTUALLY ~Dialogue(\[PC\])~ ~StartDialogueNoSet([PC])~
+  END
+
+// syntax, strref adjustment
+COPY ~ub_iwd/dlg/ring.d~ ~weidu_external/ub_iwd/dlg/ring.d~
+  PATCH_IF ("%iwd-in-bg2%" = 1) BEGIN
+    REPLACE_TEXTUALLY ~HideCreature(Myself,TRUE)~ ~Deactivate(Myself)~
+    PATCH_IF iwd_offset BEGIN
+      REPLACE_EVALUATE ~#\([0-9]+\)~ BEGIN
+        SET "RESULT" = ("%MATCH1%" + "%iwd_offset%")
+      END ~#%RESULT%~
+	  END	
+  END
+
 // iwd in bg2 adjustments
 ACTION_IF ("%iwd-in-bg2%" = 1) THEN BEGIN
   
   // minhp1 item for marketh
   COPY_EXISTING ~minhp1.itm~ ~override/cdminhp1.itm~
-
-  // syntax adjustament
-  COPY ~ub_iwd/baf/ldmarkth.baf~ ~ub_iwd/baf/ldmarkth.baf~
-    REPLACE_TEXTUALLY ~HideCreature(Myself,FALSE)~ ~Activate(Myself)~
-    REPLACE_TEXTUALLY ~SetDialogueRange(300)~ ~~
-    REPLACE_TEXTUALLY ~Dialogue(\[PC\])~ ~StartDialogueNoSet([PC])~
-
-  // syntax, strref adjustment
-  COPY ~ub_iwd/dlg/ring.d~ ~ub_iwd/dlg/ring.d~
-    REPLACE_TEXTUALLY ~HideCreature(Myself,TRUE)~ ~Deactivate(Myself)~
-    PATCH_IF iwd_offset BEGIN
-	  REPLACE_EVALUATE
-        ~#\([0-9]+\)~
-        BEGIN
-          SET "RESULT" = ("%MATCH1%" + "%iwd_offset%")
-        END
-        ~#%RESULT%~
-	END	
 
 END ELSE BEGIN
   
@@ -423,10 +425,10 @@ END
 // Isaya : fix (copy from IWD Tweaks) to avoid a warning relative to ldmarkth.baf
 APPEND ~state.ids~  ~0x00000FC0 STATE_REALLY_DEAD~ UNLESS ~0x00000FC0 STATE_REALLY_DEAD~
 
-COMPILE ~ub_iwd/dlg/ring.d~     // lotta dialogue changes here
-        ~ub_iwd/baf/cdmark.baf~ // script for teleportin' marketh
+COMPILE ~weidu_external/ub_iwd/dlg/ring.d~ // lotta dialogue changes here
+        ~ub_iwd/baf/cdmark.baf~            // script for teleportin' marketh
 
-EXTEND_TOP ~ldmarkth.bcs~ ~ub_iwd/baf/ldmarkth.baf~ // force appearance once ring swapped
+EXTEND_TOP ~ldmarkth.bcs~ ~weidu_external/ub_iwd/baf/ldmarkth.baf~ // force appearance once ring swapped
 
 // teleporting scripts
 EXTEND_BOTTOM ~%LowerDornsDeep%.bcs~                       ~ub_iwd/baf/tp8001.baf~ EVAL
@@ -481,16 +483,20 @@ CDPresioDuel
 7 - challenge ended prematurely (treachery)
 */
 
+// syntax adjustament
+COPY ~ub_iwd/baf/ar4003.baf~ ~weidu_external/ub_iwd/baf/ar4003.baf~
+  PATCH_IF ("%iwd-in-bg2%" = 1) BEGIN
+    REPLACE_TEXTUALLY ~AddXPVar("Level_2_Easy",@403)~ ~DisplayStringNoName(Myself,@403) AddXP2DA("Level_2_Easy")~
+  END
+  
+// spell not available in conversion
+COPY ~ub_iwd/baf/cdpresio.baf~ ~weidu_external/ub_iwd/baf/cdpresio.baf~
+  PATCH_IF ("%iwd-in-bg2%" = 1) BEGIN
+    REPLACE_TEXTUALLY ~HaveSpell(WIZARD_BELTYNS_BURNING_BLOOD)~ ~False()~
+  END
+  
 // iwd in bg2 adjustments
 ACTION_IF ("%iwd-in-bg2%" = 1) THEN BEGIN
-
-  // syntax adjustament
-  COPY ~ub_iwd/baf/ar4003.baf~ ~ub_iwd/baf/ar4003.baf~
-    REPLACE_TEXTUALLY ~AddXPVar("Level_2_Easy",@403)~ ~DisplayStringNoName(Myself,@403) AddXP2DA("Level_2_Easy")~
-
-  // spell not available in conversion
-  COPY ~ub_iwd/baf/cdpresio.baf~ ~ub_iwd/baf/cdpresio.baf~
-    REPLACE_TEXTUALLY ~HaveSpell(WIZARD_BELTYNS_BURNING_BLOOD)~ ~False()~
 
   // can't use ini to give cold wights override script
   COPY_EXISTING ~#4003c1.cre~ ~override~ 
@@ -530,12 +536,12 @@ script_Override = cdpres~
   
 END
 
-COMPILE ~ub_iwd/baf/cd4003tp.baf~ // 'trap' on bridge to detect treachery
-        ~ub_iwd/baf/cdpres.baf~   // pauses creatures for duel
-        ~ub_iwd/baf/cdpresio.baf~ // presio's scipt pared for single combat
-        ~ub_iwd/dlg/dundlt2.d~    // alter dialogue to allow for challenge issuance
+COMPILE ~ub_iwd/baf/cd4003tp.baf~                // 'trap' on bridge to detect treachery
+        ~ub_iwd/baf/cdpres.baf~                  // pauses creatures for duel
+        ~weidu_external/ub_iwd/baf/cdpresio.baf~ // presio's scipt pared for single combat
+        ~ub_iwd/dlg/dundlt2.d~                   // alter dialogue to allow for challenge issuance
         
-EXTEND_BOTTOM ~ar4003.bcs~ ~ub_iwd/baf/ar4003.baf~ // XP for defeating presio in single combat
+EXTEND_BOTTOM ~ar4003.bcs~ ~weidu_external/ub_iwd/baf/ar4003.baf~ // XP for defeating presio in single combat
 
 COPY_EXISTING ~presio.cre~ ~override/cdpresio.cre~
   WRITE_ASCII 0x248 ~cdpresio~ #8
@@ -599,21 +605,24 @@ BEGIN @600 DESIGNATED 600
 REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
 LABEL ~cd_iwd_ub_high_baptists_flock~
 
-// make iwd -> bg2 syntax adjustments for scripts and dialogues prior to their compilation below
-ACTION_IF ("%iwd-in-bg2%" = 1) THEN BEGIN
-
-  COPY ~ub_iwd/dlg/highbapt.d~ ~ub_iwd/dlg/highbapt.d~
+// syntax adjustments for non-oiwd
+COPY ~ub_iwd/dlg/highbapt.d~ ~weidu_external/ub_iwd/dlg/highbapt.d~
+  PATCH_IF ("%iwd-in-bg2%" = 1) BEGIN
     REPLACE_TEXTUALLY ~AddXPVar("\([^"]+\)",0)~ ~AddXP2DA("\1")~
-    REPLACE_EVALUATE // always be careful here; will also affect WEIGHT #x if you're not careful
-        ~#\([0-9]+\)~
-        BEGIN
-          SET "RESULT" = ("%MATCH1%" + "%iwd_offset%")
-        END
-        ~#%RESULT%~
+    REPLACE_EVALUATE ~#\([0-9]+\)~ BEGIN // always be careful here; will also affect WEIGHT #x if you're not careful
+      SET "RESULT" = ("%MATCH1%" + "%iwd_offset%")
+    END ~#%RESULT%~
+  END  
 
-  COPY ~ub_iwd/baf/cdcapvil.baf~ ~ub_iwd/baf/cdcapvil.baf~
+// syntax adjustments for non-oiwd
+COPY ~ub_iwd/baf/cdcapvil.baf~ ~weidu_external/ub_iwd/baf/cdcapvil.baf~
+  PATCH_IF ("%iwd-in-bg2%" = 1) BEGIN
     REPLACE_TEXTUALLY ~!BitGlobal(":AREA_VAR","MYAREA",4,AND)~ ~!Global("AREA_VARBit1","MYAREA",3)~
     REPLACE_TEXTUALLY ~BitGlobal(":AREA_VAR","MYAREA",4,OR)~   ~SetGlobal("AREA_VARBit1","MYAREA",3)~
+  END  
+
+// make iwd -> bg2 syntax adjustments for scripts and dialogues prior to their compilation below
+ACTION_IF ("%iwd-in-bg2%" = 1) THEN BEGIN
 
   EXTEND_BOTTOM ~ar4005.bcs~ ~ub_iwd/baf/hb400522.baf~ // since no dv_increment in bg2 engine...
 
@@ -621,8 +630,8 @@ END
 
 EXTEND_BOTTOM ~ar4005.bcs~ ~ub_iwd/baf/hb4005.baf~
 
-COMPILE ~ub_iwd/dlg/highbapt.d~   // alter dialogue to hand out quest xp
-        ~ub_iwd/baf/cdcapvil.baf~ // scripting for new captive villagers
+COMPILE ~weidu_external/ub_iwd/dlg/highbapt.d~   // alter dialogue to hand out quest xp
+        ~weidu_external/ub_iwd/baf/cdcapvil.baf~ // scripting for new captive villagers
 
 COPY_EXISTING ~mcapvil.cre~  ~override/cdcapv1a.cre~
               ~fcapvil.cre~  ~override/cdcapv2a.cre~
