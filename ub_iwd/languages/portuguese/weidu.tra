@@ -14,7 +14,10 @@
  
  @600 = ~O Rebanho do Sumo Baptist~
 
+ @700 = ~Sombras Reais no Vale das Sombras [Graion Dilach]~
+ @701 = ~Esta mudança só funciona com o oIWD (com o HoW e/ou o ToTLM instalados) e o IWD-EE.~
+
 @1500 = ~Restaurações dos Itens Menores~ 
 
-@2000 = ~Queda Aleatória dos Itens Restaurada~
+@2000 = ~Restaurada a Queda Aleatória dos Itens~
 @2001 = ~O Heart of Winter é requerido pra este componente.~
