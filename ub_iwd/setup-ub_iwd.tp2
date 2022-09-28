@@ -47,28 +47,28 @@ ALWAYS
 	
 END
 
-LANGUAGE ~English~                                 ~english~    ~ub_iwd/languages/english/game.tra~
-                                                                ~ub_iwd/languages/english/weidu.tra~
-LANGUAGE ~French (by Graoumf)~                     ~french~     ~ub_iwd/languages/english/game.tra~
-                                                                ~ub_iwd/languages/english/weidu.tra~
-                                                                ~ub_iwd/languages/french/game.tra~
-                                                                ~ub_iwd/languages/french/weidu.tra~
-LANGUAGE ~Italian (by Giuseppe)~                   ~italian~    ~ub_iwd/languages/english/game.tra~
-                                                                ~ub_iwd/languages/english/weidu.tra~
-                                                                ~ub_iwd/languages/italian/game.tra~
-                                                                ~ub_iwd/languages/italian/weidu.tra~
-LANGUAGE ~Russian (by Prowler, Accolon, Hawkmoon)~ ~russian~    ~ub_iwd/languages/english/game.tra~
-                                                                ~ub_iwd/languages/english/weidu.tra~
-                                                                ~ub_iwd/languages/russian/game.tra~
-                                                                ~ub_iwd/languages/russian/weidu.tra~
-LANGUAGE ~Deutsch (Mike)~                          ~german~     ~ub_iwd/languages/english/game.tra~
-                                                                ~ub_iwd/languages/english/weidu.tra~
-                                                                ~ub_iwd/languages/german/game.tra~
-                                                                ~ub_iwd/languages/german/weidu.tra~
-LANGUAGE ~Brazilian Portuguese (Felipe)~           ~portuguese~ ~ub_iwd/languages/english/game.tra~
-                                                                ~ub_iwd/languages/english/weidu.tra~
-                                                                ~ub_iwd/languages/portuguese/game.tra~
-                                                                ~ub_iwd/languages/portuguese/weidu.tra~
+LANGUAGE ~English~                                 ~english~              ~ub_iwd/languages/english/game.tra~
+                                                                          ~ub_iwd/languages/english/weidu.tra~
+LANGUAGE ~French (by Graoumf)~                     ~french~               ~ub_iwd/languages/english/game.tra~
+                                                                          ~ub_iwd/languages/english/weidu.tra~
+                                                                          ~ub_iwd/languages/french/game.tra~
+                                                                          ~ub_iwd/languages/french/weidu.tra~
+LANGUAGE ~Italian (by Giuseppe)~                   ~italian~              ~ub_iwd/languages/english/game.tra~
+                                                                          ~ub_iwd/languages/english/weidu.tra~
+                                                                          ~ub_iwd/languages/italian/game.tra~
+                                                                          ~ub_iwd/languages/italian/weidu.tra~
+LANGUAGE ~Russian (by Prowler, Accolon, Hawkmoon)~ ~russian~              ~ub_iwd/languages/english/game.tra~
+                                                                          ~ub_iwd/languages/english/weidu.tra~
+                                                                          ~ub_iwd/languages/russian/game.tra~
+                                                                          ~ub_iwd/languages/russian/weidu.tra~
+LANGUAGE ~Deutsch (Mike)~                          ~german~               ~ub_iwd/languages/english/game.tra~
+                                                                          ~ub_iwd/languages/english/weidu.tra~
+                                                                          ~ub_iwd/languages/german/game.tra~
+                                                                          ~ub_iwd/languages/german/weidu.tra~
+LANGUAGE ~Brazilian Portuguese (Felipe)~           ~brazilian_portuguese~ ~ub_iwd/languages/english/game.tra~
+                                                                          ~ub_iwd/languages/english/weidu.tra~
+                                                                          ~ub_iwd/languages/brazilian_portuguese/game.tra~
+                                                                          ~ub_iwd/languages/brazilian_portuguese/weidu.tra~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
