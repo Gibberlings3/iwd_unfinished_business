@@ -1,7 +1,7 @@
 BACKUP ~weidu_external/ub_iwd/backup~ // location to store files for backup
 SUPPORT ~https://www.gibberlings3.net/forums/forum/152-icewind-dale-mod-roundup/~ // url displayed if install fails
 
-VERSION ~v10~
+VERSION ~v11~
 README ~ub_iwd/readme-ub_iwd.html~
 
 ASK_EVERY_COMPONENT
