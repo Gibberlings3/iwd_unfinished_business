@@ -270,7 +270,13 @@ END
 COMPILE ~weidu_external/ub_iwd/baf/cdmalgol.baf~
         ~weidu_external/ub_iwd/dlg/malgolem.d~
 
-EXTEND_BOTTOM ~ar8007.bcs~   ~ub_iwd/baf/ar8007.baf~
+ACTION_IF MOD_IS_INSTALLED ~ab/ab.tp2~ ~0~ BEGIN // AB renames this container for no discernible reason
+  OUTER_SPRINT mal_bookshelf "BookShelf1"
+END ELSE BEGIN
+  OUTER_SPRINT mal_bookshelf "Book$helf1"
+END
+  
+EXTEND_BOTTOM ~ar8007.bcs~   ~ub_iwd/baf/ar8007.baf~ EVALUATE_BUFFER
 
 COPY_EXISTING ~ar8010.are~ ~override~
   READ_LONG  0x54 "actor_off"
