@@ -79,9 +79,34 @@ LANGUAGE ~Brazilian Portuguese (Felipe)~           ~brazilian_portuguese~ ~ub_iw
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @0 DESIGNATED 0
-REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~amfaith.itm~ @2 // skip if auril's bane installed
 REQUIRE_PREDICATE !(GAME_IS ~iwdee~) AND !((GAME_IS ~eet~) AND (FILE_CONTAINS ~override/EET.flag~ ~IWD-in-EET~)) @3
 LABEL ~cd_iwd_ub_voice_of_durdel_anatha~
+  
+ACTION_IF MOD_IS_INSTALLED ~ab/ab.tp2~ ~0~ BEGIN // disable AB's version of the Voice if installed
+  
+  COPY_EXISTING ~ar8009.are~ ~override~ // delete voice out of area file
+    READ_LONG  0x54 act_off
+    READ_SHORT 0x58 act_num
+    SET delete_idx = "-1"
+    FOR (index = act_num - 1 ; index >= 0 ; --index) BEGIN
+      READ_ASCII (act_off + 0x80 + (index * 0x110)) cre_file
+      PATCH_IF ("%cre_file%" STRING_COMPARE_CASE "voice" = 0) BEGIN
+        SET delete_idx = index
+        SET index = "-1" // kill loop
+      END
+    END      
+    PATCH_IF delete_idx >= 0 BEGIN
+      LPF fj_are_structure INT_VAR fj_delete_mode = delete_idx STR_VAR fj_structure_type = actor END
+    END  
+    BUT_ONLY 
+    
+  COPY_EXISTING ~ar8009.bcs~ ~override~ // disable AB scripting in the area
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~\(GlobalLT("Voice_No_Spawn","GLOBAL",1)\)~ ~False() \1~ // disable AB scripting
+    END  
+    BUT_ONLY
+  
+END  
 
 // make iwd -> bg2 syntax adjustments for scripts and dialogues prior to their compilation below
 COPY ~ub_iwd/baf/lddurd01.baf~ ~weidu_external/ub_iwd/baf/lddurd01.baf~
@@ -127,6 +152,7 @@ COPY_EXISTING ~sincylia.cre~ ~override/cdbethla.cre~
 
 // add generic combat script, items
 COPY_EXISTING ~voice.cre~ ~override~
+  WRITE_ASCII  0x260 ~lddurd01~ // in case AB nukes it
   WRITE_ASCII  0x268 ~gnmmgsgh~ // assign generic combat script
   PATCH_IF ("%iwd-in-bg2%" = 0) BEGIN
     REPLACE_CRE_ITEM ~min2hp~  #1 #1 #1 ~NONE~ ~AMULET~
