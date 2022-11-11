@@ -722,6 +722,72 @@ COPY_EXISTING ~ar3000.ini~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
+///// restore the LDD wardstone                        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @800 DESIGNATED 800
+LABEL ~cd_iwd_ub_ldd_wardstone~
+
+ACTION_IF GAME_IS iwdee BEGIN
+  COPY ~ub_iwd/bam/cdldward_ee.bam~ ~override/cdldward.bam~ // wardstone bam
+END ELSE BEGIN
+  COPY ~ub_iwd/bam/cdldward.bam~ ~override~ // wardstone bam
+END
+
+ACTION_IF !FILE_EXISTS_IN_GAME ~gward01.bam~ BEGIN
+  COPY ~ub_iwd/bam/gward01.bam~ ~override~ // wardstone bam ground icon from totsc (present on iwdee)
+END  
+
+COPY ~ub_iwd/itm/cdldward.itm~ ~override~ // wardstone itself
+  SAY 0x08 @801
+  SAY 0x0c @801
+  SAY 0x50 @802
+  SAY 0x54 @802
+  
+COMPILE ~ub_iwd/baf/cdldward.baf~ // script to enable transition once wardstone is present
+
+// any dialogue that gives Joril's badge, also give the wardstone
+COPY_EXISTING ~djoril.dlg~ ~override~
+  DECOMPILE_AND_PATCH BEGIN 
+    REPLACE_TEXTUALLY ~GiveItem("Joril",\([^)]+\))~ ~GiveItem("Joril",\1) GiveItem("cdldward",\1)~
+  END  
+  BUT_ONLY
+
+COPY_EXISTING ~joril.cre~ ~override~
+  ADD_CRE_ITEM ~cdldward~ #0 #0 #0 NONE INV
+  BUT_ONLY
+  
+COPY_EXISTING ~ar7000.are~ ~override~
+  LPF ALTER_AREA_REGION INT_VAR flag_deactivated = 1 STR_VAR region_name = To8001 END // deactivate travel trigger
+  LPF fj_are_structure // overlay travel trigger with scripted info trigger
+    INT_VAR
+    fj_type         = 1    //travel
+    fj_box_left     = 1040
+    fj_box_top      = 522
+    fj_box_right    = 1263
+    fj_box_bottom   = 722
+    fj_loc_x        = 1161
+    fj_loc_y        = 643
+    fj_cursor_idx   = 30   //door
+    fj_vertex_0     = 1124 + (722 << 16)
+    fj_vertex_1     = 1044 + (675 << 16)
+    fj_vertex_2     = 1040 + (579 << 16)
+    fj_vertex_3     = 1049 + (571 << 16)
+    fj_vertex_4     = 1182 + (522 << 16)
+    fj_vertex_5     = 1263 + (524 << 16)
+    fj_vertex_6     = 1258 + (649 << 16)
+    fj_vertex_7     = 1185 + (691 << 16)
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = cdldward
+    fj_reg_script       = cdldward
+  END 
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
 ///// minor item restorations                          \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

@@ -31,3 +31,12 @@
  @511 = ~Welcome back travelers. I have your new shield ready. I laid in several enchantments to make it much tougher.~
  @512 = ~Is there anything else I can do for you?~
  @513 = ~You mentioned upgrading the rhino beetle shield before. What's involved with that?~
+ 
+ @801 = ~Cobalt Wardstone~
+ @802 = ~Dwarven runes are etched into this smooth oblong token. The grooves glow with a soft golden light that seems to emanate from somewhere within the stone.
+
+STATISTICS:
+
+Weight: 1~
+ @803 = ~Your wardstone disables the magical wards. The path is clear.~
+ @804 = ~This entrance is magically warded and cannot be accessed without the proper wardstone.~

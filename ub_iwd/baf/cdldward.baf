@@ -1,0 +1,17 @@
+IF
+  Clicked([ANYONE])
+  PartyHasItem("cdldward")
+THEN
+  RESPONSE #100
+    DisplayString("cdldward",@803)
+    TriggerActivation("To8001",TRUE)
+    TriggerActivation("cdldward",FALSE)
+END
+
+IF
+  Clicked([ANYONE])
+  !PartyHasItem("cdldward")
+THEN
+  RESPONSE #100
+    DisplayString("cdldward",@804)
+END
