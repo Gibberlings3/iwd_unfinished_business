@@ -1,5 +1,5 @@
-ADD_TRANS_ACTION DMALASIM BEGIN  9 END BEGIN END ~AddexperienceParty(35000)~ // deactivate
-ADD_TRANS_ACTION DMALASIM BEGIN 10 END BEGIN END ~AddexperienceParty(45000)~ // turn against
+ADD_TRANS_ACTION DMALASIM BEGIN 0 END BEGIN 2 END ~AddexperienceParty(35000)~ // deactivate
+ADD_TRANS_ACTION DMALASIM BEGIN 0 END BEGIN 3 END ~AddexperienceParty(45000)~ // turn against
 
 APPEND DMALAVON
 

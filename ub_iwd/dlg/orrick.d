@@ -14,14 +14,16 @@ END
 
 APPEND DORRICK
 
-  IF WEIGHT #0 ~Global("CDOrrickShield","MYAREA",0)
-                PartyHasItem("beetshld")~ THEN BEGIN ShieldOffer SAY @501 = @502
+  IF WEIGHT #-1 ~NumTimesTalkedToGT(0)
+                 Global("CDOrrickShield","MYAREA",0)
+                 PartyHasItem("beetshld")~ THEN BEGIN ShieldOffer SAY @501 = @502
     IF ~~ THEN REPLY @503 DO ~SetGlobal("CDOrrickShield","MYAREA",1)~ GOTO WhatUpgrade
     IF ~~ THEN REPLY @504 DO ~SetGlobal("CDOrrickShield","MYAREA",1)~ GOTO NoThanks
   END
 
-  IF WEIGHT #0 ~Global("CDOrrickShield","MYAREA",2)
-                GlobalTimerExpired("CDOrrickShieldTimer","MYAREA")~ THEN BEGIN ShieldReady SAY @511
+  IF WEIGHT #-1 ~NumTimesTalkedToGT(0)
+                 Global("CDOrrickShield","MYAREA",2)
+                 GlobalTimerExpired("CDOrrickShieldTimer","MYAREA")~ THEN BEGIN ShieldReady SAY @511
     IF ~~ THEN DO ~GiveItemCreate("orrshld",Protagonist,0,0,0)
                    SetGlobal("CDOrrickShield","MYAREA",3)~ GOTO ShieldReady2
   END
