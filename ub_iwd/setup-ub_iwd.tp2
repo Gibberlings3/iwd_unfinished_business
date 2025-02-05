@@ -69,6 +69,10 @@ LANGUAGE ~Brazilian Portuguese (Felipe)~           ~brazilian_portuguese~ ~ub_iw
                                                                           ~ub_iwd/languages/english/weidu.tra~
                                                                           ~ub_iwd/languages/brazilian_portuguese/game.tra~
                                                                           ~ub_iwd/languages/brazilian_portuguese/weidu.tra~
+LANGUAGE ~Spanish (alaisFcZ)~                      ~spanish~              ~ub_iwd/languages/english/game.tra~
+                                                                          ~ub_iwd/languages/english/weidu.tra~
+                                                                          ~ub_iwd/languages/spanish/game.tra~
+                                                                          ~ub_iwd/languages/spanish/weidu.tra~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

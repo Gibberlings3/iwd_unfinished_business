@@ -1,0 +1,42 @@
+   @1 = ~Hermana Bethla~
+
+ @101 = ~Libro de construcción de Gólems~
+ @102 = ~Ah, ¡qué excelente trabajo has hecho deshaciéndote de mi simulacro! Me llevó mucho tiempo fabricarlo, pero el oro no es problema cuando el sufrimiento ajeno es la mayor recompensa.  ¡Ja, ja, ja!~
+ 
+ @301 = ~Bueno, me temo que tendrás que atraparme. Buena suerte.~
+ @302 = ~Esta mañana me he despertado y me he dado cuenta de que mi pequeño anillo era falso. No tengo ni idea de quién eres, pero me siento seguro al asumir que *tu* eres el responsable.~
+ @303 = ~Debería haberte matado la primera vez que te vi. Sabía que darías problemas. Bueno, lo has hecho.  Mi anillo ha desaparecido, con la ayuda de Ginafae, sin duda. Es una chica lista. Los dos habéis sido más listas que yo.~ 
+ @304 = ~¿Por qué no confrontas a Marketh?~
+ @305 = ~¿Te gustaría ayudarnos a derrotar a Marketh?~
+ @306 = ~¿Tienes alguna idea para el anillo de Marketh?~
+ @307 = ~Todavía no. Adiós.~
+ @308 = ~Hola de nuevo. Me las arreglé para cambiar el anillo de Marketh.~
+ @309 = ~Por favor, no olvides tu promesa.~
+ 
+ @401 = ~Entonces enfréntame tú solo. ¿O debes esconderte detrás de tus secuaces?~
+ @402 = ~Ven entonces, bruja, y enfréntame en combate singular. Pongamos a prueba mi justa fe contra tus retorcidas artes.~
+ @403 = ~Desafiaste a Presio a un combate singular y venciste.~
+ @404 = ~¡Traición!~
+ 
+ @501 = ~¿Es un escudo hecho de un escarabajo rinoceronte? Es un material muy resistente, y he leído que se adapta bastante bien a los encantamientos.~
+ @502 = ~Podría mejorarlo aún más para vosotros, si lo deseáis.~
+ @503 = ~¿Qué implica la actualización del escudo?~
+ @504 = ~Quizás más adelante.~
+ @505 = ~Si cambias de opinión, házmelo saber. ¿Hay algo más que pueda hacer por vosotros?~
+ @506 = ~Llevará unos días colocar los encantamientos adecuados, y los materiales son bastante caros.~
+ @507 = ~Ya que me has traído este excelente tomo sobre los Mytales, estoy dispuesto a renunciar a la mayor parte del coste. Digamos 15.000 de oro.~
+ @508 = ~Por los materiales y el tiempo, te costará unos 30.000 de oro.~
+ @509 = ~Tienes un trato.~
+ @510 = ~Excelente. Vuelve en tres días y el escudo estará listo. ¿Puedo ayudarte en algo más?~
+ @511 = ~Bienvenidos viajeros. Tengo vuestro nuevo escudo listo. Coloqué varios encantamientos para hacerlo mucho más resistente.~
+ @512 = ~¿Hay algo más que pueda hacer por vosotros?~
+ @513 = ~Antes has mencionado la mejora del escudo del escarabajo rinoceronte. ¿En qué consiste?~
+ 
+ @801 = ~Piedra de guarda Gris~
+ @802 = ~Las runas enanas están grabadas en esta pieza oblonga y lisa. Los surcos brillan con una suave luz dorada que parece emanar de algún lugar dentro de la piedra.
+
+CARACTERÍSTICAS:
+
+Peso: 1~
+ @803 = ~Tu Piedra guarda de protección desactiva las protecciones mágicas. El camino está libre.~
+ @804 = ~Esta entrada está protegida mágicamente y no se puede acceder a ella sin la piedra de protección adecuada.~
