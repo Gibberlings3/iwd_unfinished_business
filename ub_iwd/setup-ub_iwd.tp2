@@ -736,6 +736,7 @@ LABEL ~cd_iwd_ub_ldd_wardstone~
 
 ACTION_IF GAME_IS iwdee BEGIN
   COPY ~ub_iwd/bam/cdldward_ee.bam~ ~override/cdldward.bam~ // wardstone bam
+  COPY ~ub_iwd/bam/cdhelm18.bam~    ~override~
 END ELSE BEGIN
   COPY ~ub_iwd/bam/cdldward.bam~ ~override~ // wardstone bam
 END
@@ -749,6 +750,9 @@ COPY ~ub_iwd/itm/cdldward.itm~ ~override~ // wardstone itself
   SAY 0x0c @801
   SAY 0x50 @802
   SAY 0x54 @802
+  PATCH_IF GAME_IS iwdee BEGIN
+    WRITE_ASCII 0x58 cdhelm18
+  END   
   
 COMPILE ~ub_iwd/baf/cdldward.baf~ // script to enable transition once wardstone is present
 
