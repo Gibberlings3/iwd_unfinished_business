@@ -73,7 +73,10 @@ LANGUAGE ~Spanish (alaisFcZ)~                              ~spanish~            
                                                                                   ~ub_iwd/languages/english/weidu.tra~
                                                                                   ~ub_iwd/languages/spanish/game.tra~
                                                                                   ~ub_iwd/languages/spanish/weidu.tra~
-
+LANGUAGE ~Simplified Chinese~                              ~schinese~              ~ub_iwd/languages/english/game.tra~
+                                                                                  ~ub_iwd/languages/english/weidu.tra~
+                                                                                  ~ub_iwd/languages/schinese/game.tra~
+                                                                                  ~ub_iwd/languages/schinese/weidu.tra~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
